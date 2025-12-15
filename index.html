@@ -754,6 +754,46 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ======== ENHANCEMENTS ======== */
+        .progress-card {background: linear-gradient(135deg, rgba(255,159,28,0.12), rgba(0,168,232,0.08)); border:1px solid var(--border); border-radius:16px; padding:1.5rem; margin:2rem auto; max-width:900px; box-shadow:0 15px 40px rgba(0,0,0,0.2);}        
+        .progress-track {width:100%; height:18px; background:rgba(255,255,255,0.05); border-radius:12px; overflow:hidden; border:1px solid var(--border);}
+        .progress-fill {height:100%; width:60%; background: linear-gradient(90deg, #FF9F1C, #00A8E8); box-shadow:0 0 18px rgba(255,159,28,0.4);}        
+        .progress-meta {display:flex; justify-content:space-between; gap:1rem; font-size:0.95rem; color:var(--text); margin-top:0.6rem; flex-wrap:wrap;}
+        .progress-label {font-weight:700; color:var(--primary);}        
+
+        .sprint-meta {display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:0.75rem; margin:0.75rem 0 0.5rem; font-size:0.9rem; color:var(--text);}        
+        .meta-pill {padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,0.04);}        
+        .sprint-progress {width:100%; height:10px; background:rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; margin:0.5rem 0 0.25rem;}
+        .sprint-progress .bar {height:100%; background:linear-gradient(90deg, #00A8E8, #00C9A7);}        
+        .sprint-tasks ul {list-style:none; padding-left:0; margin:0.5rem 0 0;}
+        .sprint-tasks li {display:flex; align-items:center; gap:0.5rem; padding:0.2rem 0; color:var(--text); font-size:0.95rem;}
+        .check {color:#00C9A7;}
+        .todo {color:var(--warning);}        
+
+        .timeline-horizontal {margin:3rem auto; max-width:1100px; position:relative; padding:2rem 1rem 1rem;}
+        .timeline-track {height:10px; background:rgba(255,255,255,0.08); border-radius:8px; position:relative; overflow:hidden;}
+        .timeline-phase {position:absolute; top:0; height:10px; border-radius:8px; box-shadow:0 6px 16px rgba(0,0,0,0.25);}        
+        .timeline-phase.ph1 {left:0; width:20%; background:linear-gradient(90deg,#FF9F1C,#FFBD66);}        
+        .timeline-phase.ph2 {left:20%; width:20%; background:linear-gradient(90deg,#00A8E8,#33C2F1);}        
+        .timeline-phase.ph3 {left:40%; width:20%; background:linear-gradient(90deg,#00C9A7,#3FF0C7);}        
+        .timeline-phase.ph4 {left:60%; width:20%; background:linear-gradient(90deg,#FF6B6B,#FF9F1C);}        
+        .timeline-phase.ph5 {left:80%; width:20%; background:linear-gradient(90deg,#8E8E98,#C4C4D2);}        
+        .timeline-labels {display:flex; justify-content:space-between; margin-top:0.6rem; font-size:0.9rem; color:var(--text);}        
+        .timeline-today {position:absolute; top:-8px; width:2px; height:26px; background:#FFFFFF; box-shadow:0 0 0 6px rgba(255,255,255,0.15); left:60%;}
+        .timeline-today::after {content:'TODAY'; position:absolute; top:-18px; left:-14px; font-size:0.7rem; color:var(--light);}        
+        .milestones {display:flex; justify-content:space-between; margin-top:1rem; font-size:0.85rem; color:var(--text);}        
+        .milestone-dot {width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:6px;}
+
+        .impact-section {padding:3rem 2rem; background:linear-gradient(180deg, rgba(0,168,232,0.08), rgba(0,201,167,0.08)); border-top:1px solid var(--border);}
+        .impact-table {width:100%; max-width:1000px; margin:0 auto; border-collapse:collapse;}
+        .impact-table th, .impact-table td {border:1px solid var(--border); padding:0.9rem; text-align:left; color:var(--text);}        
+        .impact-table th {background:rgba(255,159,28,0.12); color:var(--light);}        
+        .impact-table tr:nth-child(even){background:rgba(255,255,255,0.02);}        
+
+        .export-buttons {display:flex; gap:1rem; justify-content:center; margin:2.5rem auto 1rem; flex-wrap:wrap;}
+        .export-btn {padding:0.8rem 1.2rem; border-radius:12px; border:1px solid var(--border); background:linear-gradient(135deg, rgba(255,159,28,0.15), rgba(0,168,232,0.15)); color:var(--light); cursor:pointer; font-weight:600; transition:transform 0.15s ease, box-shadow 0.15s ease;}
+        .export-btn:hover {transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.25);}        
     </style>
 </head>
 <body>
@@ -780,6 +820,21 @@
         <div class="kpi-card">
             <div class="kpi-number">2</div>
             <div class="kpi-label">En cours</div>
+        </div>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <section class="phases-section" style="padding-top:2rem;">
+        <div class="progress-card">
+            <div class="progress-label">Progression globale</div>
+            <div class="progress-track">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-meta">
+                <span>3/5 phases complétées</span>
+                <span>60% Complete</span>
+                <span>Estimated: 4 semaines restantes</span>
+            </div>
         </div>
     </section>
 
@@ -845,6 +900,25 @@
         </div>
     </section>
 
+    <!-- IMPACT & VALUE -->
+    <section class="impact-section">
+        <h2 class="section-title">Impact & Value (Before/After)</h2>
+        <table class="impact-table">
+            <thead>
+                <tr>
+                    <th>Métrique</th><th>Before (manual)</th><th>After (Solaire Facile)</th><th>Gain</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Temps par dossier</td><td>2 heures</td><td>15 min</td><td>-92% ⚡</td></tr>
+                <tr><td>Documents par dossier</td><td>7 (scattered)</td><td>1 (auto-organized)</td><td>-86% 📄</td></tr>
+                <tr><td>Lead to activation time</td><td>5 jours</td><td>1 jour</td><td>-80% 🚀</td></tr>
+                <tr><td>Error rate</td><td>23%</td><td>0.5%</td><td>-98% ✅</td></tr>
+                <tr><td>Admin overhead/mois</td><td>80h</td><td>10h</td><td>-87% 💰</td></tr>
+            </tbody>
+        </table>
+    </section>
+
     <!-- SPRINTS -->
     <section class="sprints-section">
         <h2 class="section-title">6 Sprints de Développement</h2>
@@ -856,11 +930,22 @@
                     <span class="sprint-toggle">▼</span>
                 </div>
                 <div class="sprint-content">
+                    <div class="sprint-meta">
+                        <div class="meta-pill">12 tâches</div>
+                        <div class="meta-pill">60% done</div>
+                        <div class="meta-pill">Durée: 21 jours</div>
+                        <div class="meta-pill">Dépend de: Foundation</div>
+                        <div class="meta-pill">Team: Admin, Dev</div>
+                    </div>
+                    <div class="sprint-progress"><div class="bar" style="width:60%"></div></div>
                     <div class="sprint-tasks">
-                        <div class="task"><span class="task-check">✓</span> Setup Firestore + Firebase Auth</div>
-                        <div class="task"><span class="task-check">✓</span> Architecture TypeScript</div>
-                        <div class="task"><span class="task-check">✓</span> Login/Signup system</div>
-                        <div class="task"><span class="task-check">✓</span> Role management system</div>
+                        <ul>
+                            <li><span class="check">✔</span> Setup Firestore + Firebase Auth</li>
+                            <li><span class="check">✔</span> Architecture TypeScript</li>
+                            <li><span class="check">✔</span> Login/Signup system</li>
+                            <li><span class="check">✔</span> Role management system</li>
+                            <li><span class="todo">☐</span> Tests QA</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -872,11 +957,22 @@
                     <span class="sprint-toggle">▼</span>
                 </div>
                 <div class="sprint-content">
+                    <div class="sprint-meta">
+                        <div class="meta-pill">10 tâches</div>
+                        <div class="meta-pill">80% done</div>
+                        <div class="meta-pill">Durée: 18 jours</div>
+                        <div class="meta-pill">Dépend de: Sprint 1-2</div>
+                        <div class="meta-pill">Team: Admin, Dev, QA</div>
+                    </div>
+                    <div class="sprint-progress"><div class="bar" style="width:80%"></div></div>
                     <div class="sprint-tasks">
-                        <div class="task"><span class="task-check">✓</span> Admin dashboard UI</div>
-                        <div class="task"><span class="task-check">✓</span> User management interface</div>
-                        <div class="task"><span class="task-check">✓</span> Analytics et reporting</div>
-                        <div class="task"><span class="task-check">✓</span> Configuration panel</div>
+                        <ul>
+                            <li><span class="check">✔</span> Admin dashboard UI</li>
+                            <li><span class="check">✔</span> User management interface</li>
+                            <li><span class="check">✔</span> Analytics et reporting</li>
+                            <li><span class="check">✔</span> Configuration panel</li>
+                            <li><span class="todo">☐</span> Accessibilité</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -888,11 +984,22 @@
                     <span class="sprint-toggle">▼</span>
                 </div>
                 <div class="sprint-content">
+                    <div class="sprint-meta">
+                        <div class="meta-pill">11 tâches</div>
+                        <div class="meta-pill">90% done</div>
+                        <div class="meta-pill">Durée: 21 jours</div>
+                        <div class="meta-pill">Dépend de: Sprint 3-4</div>
+                        <div class="meta-pill">Team: Dev, QA</div>
+                    </div>
+                    <div class="sprint-progress"><div class="bar" style="width:90%"></div></div>
                     <div class="sprint-tasks">
-                        <div class="task"><span class="task-check">✓</span> Portail installateur</div>
-                        <div class="task"><span class="task-check">✓</span> Workflows DP automatisés</div>
-                        <div class="task"><span class="task-check">✓</span> Consuel integration</div>
-                        <div class="task"><span class="task-check">✓</span> Document generation</div>
+                        <ul>
+                            <li><span class="check">✔</span> Portail installateur</li>
+                            <li><span class="check">✔</span> Workflows DP automatisés</li>
+                            <li><span class="check">✔</span> Consuel integration</li>
+                            <li><span class="check">✔</span> Document generation</li>
+                            <li><span class="todo">☐</span> Performance tuning</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -950,29 +1057,24 @@
     <!-- TIMELINE -->
     <section class="timeline-section">
         <h2 class="section-title">Timeline Visuelle</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h4>Semaines 1-3: Foundation</h4>
-                    <p>Infrastructure, authentification, setup technique</p>
-                </div>
+        <div class="timeline-horizontal">
+            <div class="timeline-track">
+                <div class="timeline-phase ph1" title="Phase 1: Foundation (W1-2)"></div>
+                <div class="timeline-phase ph2" title="Phase 2: Admin Core (W3-4)"></div>
+                <div class="timeline-phase ph3" title="Phase 3: Installateur (W5-6)"></div>
+                <div class="timeline-phase ph4" title="Phase 4: Client Portal (W7-9)"></div>
+                <div class="timeline-phase ph5" title="Phase 5: Scale & Polish (W10-12)"></div>
+                <div class="timeline-today"></div>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h4>Semaines 4-9: Core Features</h4>
-                    <p>Admin, Installateur, workflows DP/Consuel</p>
-                </div>
+            <div class="timeline-labels">
+                <span>S1</span><span>S3</span><span>S5</span><span>S7</span><span>S9</span><span>S11</span><span>S13</span>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h4>Semaines 10-12: Client & Finitions</h4>
-                    <p>Portal client, optimisation, launch production</p>
-                </div>
+            <div class="milestones">
+                <span><span class="milestone-dot"></span>Phase 1 launch</span>
+                <span><span class="milestone-dot"></span>Phase 2 go-live</span>
+                <span><span class="milestone-dot"></span>Phase 3 go-live</span>
+                <span><span class="milestone-dot"></span>Client Portal beta</span>
+                <span><span class="milestone-dot"></span>Scale & polish</span>
             </div>
         </div>
     </section>
@@ -1116,7 +1218,26 @@
         <p style="margin-top: 1rem;">Pour plus d'infos: <a href="https://www.qualiwatt.fr">Qualiwatt Pro</a></p>
     </footer>
 
+    <div class="export-buttons">
+        <button class="export-btn" id="export-json">📥 Export as JSON</button>
+        <button class="export-btn" id="export-pdf">📄 Export as PDF</button>
+    </div>
+
     <script>
+        // Data for export
+        const roadmapData = {
+          phasesCompleted: 3,
+          phasesTotal: 5,
+          estimatedWeeksRemaining: 4,
+          phases: [
+            { id: 1, name: "Foundation", status: "done" },
+            { id: 2, name: "Admin Core", status: "done" },
+            { id: 3, name: "Installateur", status: "done" },
+            { id: 4, name: "Client Portal", status: "in_progress" },
+            { id: 5, name: "Scale & Polish", status: "in_progress" }
+          ]
+        };
+
         // Toggle Sprint Items
         document.querySelectorAll('.sprint-header').forEach(header => {
             header.addEventListener('click', function() {
@@ -1154,6 +1275,31 @@
             document.querySelectorAll('.phase-card, .sprint-item, .faq-item').forEach(el => {
                 el.style.opacity = '1';
             });
+        });
+
+        // Export buttons
+        document.getElementById('export-json')?.addEventListener('click', () => {
+            const blob = new Blob([JSON.stringify(roadmapData, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'roadmap.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        document.getElementById('export-pdf')?.addEventListener('click', async () => {
+            const { jsPDF } = window.jspdf || await import('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+            const doc = new jsPDF();
+            doc.text("Solaire Facile - Roadmap 2025", 14, 16);
+            doc.text(`Phases: ${roadmapData.phasesCompleted}/${roadmapData.phasesTotal} complétées (60%)`, 14, 26);
+            doc.text(`Estimation restante: ${roadmapData.estimatedWeeksRemaining} semaines`, 14, 36);
+            let y = 50;
+            roadmapData.phases.forEach(p => {
+              doc.text(`${p.id}. ${p.name} - ${p.status}`, 14, y);
+              y += 8;
+            });
+            doc.save("roadmap.pdf");
         });
     </script>
 </body>
