@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schémas Processus Lead → Dossier | Solaire Facile</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #3b82f6, #a855f7, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #3b82f6;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .schema-section {
+            margin-bottom: 80px;
+        }
+
+        .schema-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .schema-title::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 30px;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            border-radius: 3px;
+        }
+
+        .schema-description {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .schema-container {
+            background: rgba(15, 23, 42, 0.5);
+            border: 2px solid rgba(148, 163, 184, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            overflow-x: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            background: rgba(30, 41, 59, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .features {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        .features h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #10b981;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-item {
+            background: rgba(30, 41, 59, 0.5);
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1);
+        }
+
+        .feature-item strong {
+            color: #10b981;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: rgba(148, 163, 184, 0.1);
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            color: #cbd5e1;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            border-color: #3b82f6;
+            color: white;
+        }
+
+        .tab-button:hover {
+            border-color: #3b82f6;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .schema-title {
+                font-size: 1.3rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🚀 Schémas: Processus Lead → Dossier</h1>
+            <p class="subtitle">Trois représentations visuelles du même flux</p>
+        </header>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">11</div>
+                <div class="stat-label">Étapes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2-3s</div>
+                <div class="stat-label">Durée Totale</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Validations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Automatisé</div>
+            </div>
+        </div>
+
+        <!-- Schema 1: Interactive React -->
+        <div class="schema-section">
+            <h2 class="schema-title">1️⃣ Schéma Interactif (React)</h2>
+            <div class="schema-description">
+                Version interactive et cliquable. Cliquez sur chaque étape pour voir les détails. 
+                Format le plus complet avec animations et tooltips. Utilisez le fichier <code>conversion-flow-schema.jsx</code>
+            </div>
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab(event, 'tab1')">
+                    📊 Vue Interactive
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'tab1-code')">
+                    💾 Code
+                </button>
+            </div>
+            <div id="tab1" class="tab-content active schema-container">
+                <p style="text-align: center; color: #94a3b8;">
+                    🎯 Ouvrez le fichier <strong>conversion-flow-schema.jsx</strong> dans votre navigateur 
+                    pour voir la version interactive complète avec animations et détails cliquables.
+                </p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="conversion-flow-schema.jsx" class="cta-button">Voir la version interactive →</a>
+                </div>
+            </div>
+            <div id="tab1-code" class="tab-content schema-container">
+                <pre style="color: #10b981; font-size: 0.85rem; overflow-x: auto;">
+Fichier: conversion-flow-schema.jsx
+Technologie: React + Tailwind CSS + Lucide Icons
+Fonctionnalités:
+  • 11 étapes avec expandable details
+  • Animations fluides
+  • Responsive design
+  • Stats en temps réel
+                </pre>
+            </div>
+        </div>
+
+        <!-- Schema 2: Mermaid Diagram -->
+        <div class="schema-section">
+            <h2 class="schema-title">2️⃣ Schéma Mermaid (Diagramme Flux)</h2>
+            <div class="schema-description">
+                Diagramme flux au format Mermaid. Parfait pour la documentation et les présentations.
+                Format texte portable, compatible GitHub, Notion, Confluence. Utilisez le fichier <code>schema-mermaid.md</code>
+            </div>
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab(event, 'tab2')">
+                    📈 Diagramme Mermaid
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'tab2-code')">
+                    📝 Code Source
+                </button>
+            </div>
+            <div id="tab2" class="tab-content active schema-container">
+                <div class="mermaid">
+                    graph TD
+                        A["👤 Prospect Arrive<br/>Landing Page"] -->|Remplit formulaire| B["📝 Lead Créé<br/>Status: 'nouveau'"]
+                        
+                        B -->|POST /api/leads| C["🗄️ Firestore Collection<br/>leads/"]
+                        
+                        C -->|Stocké en DB| D["📊 Dashboard Admin<br/>Table des Leads"]
+                        
+                        D -->|30 derniers jours| E["🔴 Leads Récents Cliquables"]
+                        
+                        E -->|Click sur lead| F["📄 Page Détail Lead<br/>/leads/:leadId"]
+                        
+                        F -->|Voir infos complètes| G["👁️ Affiche<br/>✓ Nom, Email, Téléphone<br/>✓ Adresse, Description"]
+                        
+                        G -->|Clique bouton| H["🟢 Convertir en Dossier"]
+                        
+                        H -->|Déclenche| I["✔️ Validation<br/>Champs obligatoires"]
+                        
+                        I -->|Si OK| J["🔢 Auto-incrément<br/>Compteur Firestore"]
+                        
+                        J -->|nextId+1| K["📋 Génère ID<br/>DOS-2025-XXXX"]
+                        
+                        K -->|Crée document| L["📑 Dossier Créé<br/>Collection: files"]
+                        
+                        L -->|Initialise| M["📦 Champs Dossier<br/>status: 'nouveau'"]
+                        
+                        M -->|Met à jour| N["🔗 Lead Référencé<br/>status → 'converti'"]
+                        
+                        N -->|+1| O["⚙️ Compteur +1"]
+                        
+                        O -->|Succès| P["✨ Toast Confirmation"]
+                        
+                        P -->|Auto-redirect| Q["🎯 Page Dossier<br/>DOS-2025-XXXX"]
+                        
+                        Q -->|✅ Fin| R["🎉 Dossier Prêt"]
+                        
+                        I -->|Si ERREUR| S["❌ Validation Échouée"]
+                        S -->|Reste sur page| F
+                        
+                        style A fill:#3b82f6,color:#fff
+                        style B fill:#a855f7,color:#fff
+                        style R fill:#10b981,color:#fff
+                        style S fill:#ef4444,color:#fff
+                </div>
+            </div>
+            <div id="tab2-code" class="tab-content schema-container">
+                <pre style="color: #10b981; font-size: 0.85rem; overflow-x: auto;">
+graph TD
+    A["👤 Prospect Arrive<br/>Landing Page"] -->|Remplit formulaire| B["📝 Lead Créé"]
+    ...
+    
+Format: Compatible avec
+  • GitHub (README.md)
+  • Notion
+  • Confluence
+  • Miro
+  • Draw.io
+                </pre>
+            </div>
+        </div>
+
+        <!-- Schema 3: SVG -->
+        <div class="schema-section">
+            <h2 class="schema-title">3️⃣ Schéma SVG (Visuel Haute Qualité)</h2>
+            <div class="schema-description">
+                Version SVG vectorielle. Parfait pour les présentations, impressions, ou partage avec stakeholders.
+                Zoomable, éditable, peut être intégré n'importe où. Utilisez le fichier <code>schema-visuel.svg</code>
+            </div>
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab(event, 'tab3')">
+                    🎨 SVG Visuel
+                </button>
+                <button class="tab-button" onclick="switchTab(event, 'tab3-code')">
+                    📋 Info
+                </button>
+            </div>
+            <div id="tab3" class="tab-content active schema-container">
+                <div style="text-align: center;">
+                    <p style="color: #94a3b8; margin-bottom: 20px;">
+                        🎯 Ouvrez le fichier <strong>schema-visuel.svg</strong> dans votre navigateur 
+                        pour voir le schéma complet en haute qualité.
+                    </p>
+                    <a href="schema-visuel.svg" class="cta-button">Voir le schéma SVG →</a>
+                </div>
+            </div>
+            <div id="tab3-code" class="tab-content schema-container">
+                <pre style="color: #10b981; font-size: 0.85rem; overflow-x: auto;">
+Fichier: schema-visuel.svg
+Format: SVG Vectoriel (Scalable Vector Graphics)
+Avantages:
+  ✓ Zoomable sans perte de qualité
+  ✓ Poids très léger
+  ✓ Compatible tous les navigateurs
+  ✓ Imprimable en haute résolution
+  ✓ Éditable (Figma, Illustrator, etc)
+  
+Utilisation:
+  • Présentations PowerPoint (intégrer comme image)
+  • Wikis et documentation
+  • Partage avec stakeholders
+  • Affichage en grand format
+  • Export PDF haute qualité
+                </pre>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <h3>✨ Points Clés du Processus</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>⚡ Automatisation Complète</strong>
+                    <p>Tout fonctionne en arrière-plan. Une fois le bouton cliqué, plus besoin de faire quoi que ce soit.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Validation Robuste</strong>
+                    <p>5 validations garantissent qu'aucun dossier incomplet ne sera créé.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🔢 Unicité Garantie</strong>
+                    <p>Chaque dossier a un ID unique (DOS-2025-XXXX). Les transactions Firestore garantissent zéro collision.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🔗 Traçabilité</strong>
+                    <p>Lead et Dossier sont liés bidirectionnellement. Vous savez toujours d'où vient chaque dossier.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>⚠️ Gestion d'Erreur</strong>
+                    <p>Si quelque chose échoue, l'utilisateur est informé et peut corriger ses données immédiatement.</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🚀 Scalable</strong>
+                    <p>Architecture prête pour la croissance. Peut gérer des milliers de conversions par jour.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="features" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1)); border-color: rgba(59, 130, 246, 0.3); margin-top: 60px;">
+            <h3 style="color: #3b82f6;">📥 Fichiers à Télécharger</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
+                <div style="background: rgba(30, 41, 59, 0.5); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px;">
+                    <strong style="color: #3b82f6;">conversion-flow-schema.jsx</strong>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 10px;">
+                        Version interactive React. Cliquez sur chaque étape pour voir les détails.
+                    </p>
+                </div>
+                <div style="background: rgba(30, 41, 59, 0.5); border-left: 4px solid #a855f7; padding: 20px; border-radius: 8px;">
+                    <strong style="color: #a855f7;">schema-mermaid.md</strong>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 10px;">
+                        Diagramme Mermaid. Compatible GitHub, Notion, Confluence.
+                    </p>
+                </div>
+                <div style="background: rgba(30, 41, 59, 0.5); border-left: 4px solid #10b981; padding: 20px; border-radius: 8px;">
+                    <strong style="color: #10b981;">schema-visuel.svg</strong>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 10px;">
+                        Schéma SVG haute qualité. Parfait pour les présentations et l'impression.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                🎯 Processus complet Lead → Dossier | Solaire Facile 2025<br/>
+                Créé par Claude - Anthropic | Phase 1 (Sprint 1-2 de la Roadmap)
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(event, tabName) {
+            event.preventDefault();
+
+            // Récupère le conteneur parent du bouton
+            const parent = event.target.parentElement;
+
+            // Désactive tous les boutons et tabs dans ce groupe
+            parent.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            parent.parentElement.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Active le bouton et tab sélectionné
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // Initialise Mermaid
+        mermaid.contentLoaderAsync();
+    </script>
+</body>
+</html>
