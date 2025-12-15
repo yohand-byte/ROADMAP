@@ -1,0 +1,209 @@
+<svg viewBox="0 0 1400 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fond -->
+  <rect width="1400" height="1200" fill="url(#bgGradient)"/>
+  
+  <!-- Titre -->
+  <text x="700" y="50" font-size="48" font-weight="900" text-anchor="middle" fill="#ffffff">
+    PROCESSUS COMPLET: Lead → Dossier
+  </text>
+  <text x="700" y="90" font-size="20" text-anchor="middle" fill="#94a3b8">
+    11 étapes automatisées en 2-3 secondes
+  </text>
+  
+  <!-- COLONNE 1: ENTRÉE -->
+  <g>
+    <!-- Étape 1 -->
+    <rect x="50" y="150" width="280" height="140" rx="15" fill="url(#blue)" opacity="0.9"/>
+    <circle cx="75" cy="175" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="75" y="182" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">1</text>
+    <text x="340" y="175" font-size="20" font-weight="700" fill="#ffffff">Prospect Arrive</text>
+    <text x="340" y="205" font-size="14" fill="#e0f2fe">Landing page + Formulaire</text>
+    <text x="340" y="230" font-size="14" fill="#e0f2fe">Nom, Email, Tel, Adresse, Description</text>
+    <text x="340" y="255" font-size="12" fill="#bfdbfe" font-style="italic">Output: Lead créé</text>
+    
+    <!-- Arrow down -->
+    <line x1="190" y1="290" x2="190" y2="330" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Étape 2 -->
+    <rect x="50" y="330" width="280" height="140" rx="15" fill="url(#purple)" opacity="0.9"/>
+    <circle cx="75" cy="355" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="75" y="362" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">2</text>
+    <text x="340" y="355" font-size="20" font-weight="700" fill="#ffffff">Lead Stocké</text>
+    <text x="340" y="385" font-size="14" fill="#e9d5ff">Collection: leads</text>
+    <text x="340" y="410" font-size="14" fill="#e9d5ff">Status: "nouveau"</text>
+    <text x="340" y="435" font-size="12" fill="#ddd6fe" font-style="italic">Output: Lead visible</text>
+    
+    <!-- Arrow down -->
+    <line x1="190" y1="470" x2="190" y2="510" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Étape 3 -->
+    <rect x="50" y="510" width="280" height="140" rx="15" fill="url(#pink)" opacity="0.9"/>
+    <circle cx="75" cy="535" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="75" y="542" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">3</text>
+    <text x="340" y="535" font-size="20" font-weight="700" fill="#ffffff">Tableau des Leads</text>
+    <text x="340" y="565" font-size="14" fill="#fce7f3">Dashboard Admin</text>
+    <text x="340" y="590" font-size="14" fill="#fce7f3">🔴 Lignes cliquables</text>
+    <text x="340" y="615" font-size="12" fill="#fbcfe8" font-style="italic">Output: Table interactive</text>
+  </g>
+  
+  <!-- Flèche latérale -->
+  <path d="M 330 580 L 450 580" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="390" y="570" font-size="12" fill="#94a3b8" text-anchor="middle">Clique</text>
+  
+  <!-- COLONNE 2: DÉTAIL & VALIDATION -->
+  <g>
+    <!-- Étape 4 -->
+    <rect x="450" y="510" width="280" height="140" rx="15" fill="url(#cyan)" opacity="0.9"/>
+    <circle cx="475" cy="535" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="475" y="542" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">4</text>
+    <text x="740" y="535" font-size="20" font-weight="700" fill="#ffffff">Page Détail Lead</text>
+    <text x="740" y="565" font-size="14" fill="#cffafe">/leads/{leadId}</text>
+    <text x="740" y="590" font-size="14" fill="#cffafe">Tous les champs visibles</text>
+    <text x="740" y="615" font-size="12" fill="#a5f3fc" font-style="italic">Output: Page ouverte</text>
+    
+    <!-- Arrow down -->
+    <line x1="590" y1="650" x2="590" y2="690" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Étape 5 - VALIDATION -->
+    <rect x="450" y="690" width="280" height="160" rx="15" fill="url(#amber)" opacity="0.9"/>
+    <circle cx="475" cy="720" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="475" y="727" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">5</text>
+    <text x="740" y="720" font-size="20" font-weight="700" fill="#ffffff">Validation Données</text>
+    <text x="740" y="745" font-size="12" fill="#fef3c7">✓ Nom rempli? ✓ Email valide?</text>
+    <text x="740" y="765" font-size="12" fill="#fef3c7">✓ Tel > 9 chars? ✓ Adresse ok?</text>
+    <text x="740" y="785" font-size="12" fill="#fef3c7">✓ Description non vide?</text>
+    <text x="740" y="810" font-size="12" fill="#fcd34d" font-style="italic">Output: Validation réussie</text>
+  </g>
+  
+  <!-- Flèche latérale -->
+  <path d="M 730 760 L 850 760" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="790" y="750" font-size="12" fill="#94a3b8" text-anchor="middle">✅ OK</text>
+  
+  <!-- COLONNE 3: CRÉATION -->
+  <g>
+    <!-- Étape 6 -->
+    <rect x="850" y="690" width="280" height="160" rx="15" fill="url(#amber)" opacity="0.9"/>
+    <circle cx="875" cy="720" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="875" y="727" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">6</text>
+    <text x="1140" y="720" font-size="20" font-weight="700" fill="#ffffff">Auto-incrément ID</text>
+    <text x="1140" y="745" font-size="12" fill="#fef3c7">Compteur Firestore</text>
+    <text x="1140" y="765" font-size="12" fill="#fef3c7">nextId: 42 → 43</text>
+    <text x="1140" y="785" font-size="12" fill="#fef3c7">Format: DOS-2025-0043</text>
+    <text x="1140" y="810" font-size="12" fill="#fcd34d" font-style="italic">Output: ID généré</text>
+    
+    <!-- Arrow down -->
+    <line x1="990" y1="850" x2="990" y2="890" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Étape 7 -->
+    <rect x="850" y="890" width="280" height="140" rx="15" fill="url(#emerald)" opacity="0.9"/>
+    <circle cx="875" cy="915" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="875" y="922" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">7</text>
+    <text x="1140" y="915" font-size="20" font-weight="700" fill="#ffffff">Dossier Créé</text>
+    <text x="1140" y="945" font-size="14" fill="#d1fae5">Collection: files</text>
+    <text x="1140" y="970" font-size="14" fill="#d1fae5">Document: DOS-2025-0043</text>
+    <text x="1140" y="1000" font-size="12" fill="#a7f3d0" font-style="italic">Output: Dossier en DB</text>
+  </g>
+  
+  <!-- Flèche vers le haut -->
+  <path d="M 850 950 L 730 950" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- COLONNE 2 BAS: MISE À JOUR -->
+  <g>
+    <!-- Étape 8 -->
+    <rect x="450" y="890" width="280" height="140" rx="15" fill="url(#pink)" opacity="0.9"/>
+    <circle cx="475" cy="915" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="475" y="922" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">8</text>
+    <text x="740" y="915" font-size="20" font-weight="700" fill="#ffffff">Lead Mis à Jour</text>
+    <text x="740" y="945" font-size="14" fill="#fce7f3">Status → "converti"</text>
+    <text x="740" y="970" font-size="14" fill="#fce7f3">clientId → DOS-2025-0043</text>
+    <text x="740" y="1000" font-size="12" fill="#fbcfe8" font-style="italic">Output: Lead converti</text>
+    
+    <!-- Arrow down -->
+    <line x1="590" y1="1030" x2="590" y2="1070" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- COLONNE 1 BAS: FINAL -->
+  <g>
+    <!-- Étape 9 -->
+    <rect x="50" y="690" width="280" height="140" rx="15" fill="url(#purple)" opacity="0.9"/>
+    <circle cx="75" cy="715" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="75" y="722" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">9</text>
+    <text x="340" y="715" font-size="20" font-weight="700" fill="#ffffff">Compteur +1</text>
+    <text x="340" y="745" font-size="14" fill="#e9d5ff">counters/dossiers</text>
+    <text x="340" y="770" font-size="14" fill="#e9d5ff">nextId: 43 → 44</text>
+    <text x="340" y="800" font-size="12" fill="#ddd6fe" font-style="italic">Output: Prêt suivant</text>
+    
+    <!-- Arrow right -->
+    <path d="M 330 760 L 450 760" stroke="#64748b" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Étape 10 -->
+    <rect x="50" y="1070" width="280" height="140" rx="15" fill="url(#cyan)" opacity="0.9"/>
+    <circle cx="75" cy="1095" r="18" fill="#ffffff" opacity="0.3"/>
+    <text x="75" y="1102" font-size="18" font-weight="900" text-anchor="middle" fill="#ffffff">10</text>
+    <text x="340" y="1095" font-size="20" font-weight="700" fill="#ffffff">Success Toast</text>
+    <text x="340" y="1125" font-size="14" fill="#cffafe">✅ "Dossier créé!"</text>
+    <text x="340" y="1150" font-size="14" fill="#cffafe">Auto-redirect après 2s</text>
+    <text x="340" y="1175" font-size="12" fill="#a5f3fc" font-style="italic">Output: Feedback utilisateur</text>
+  </g>
+  
+  <!-- Arrow final -->
+  <path d="M 590 1070 L 590 1020" stroke="#64748b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Flèche marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+    </marker>
+  </defs>
+  
+  <!-- Stats en bas -->
+  <g>
+    <rect x="50" y="1100" width="1300" height="80" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <text x="200" y="1130" font-size="18" font-weight="700" fill="#ffffff">⏱️ Durée: 2-3 secondes</text>
+    <text x="200" y="1160" font-size="14" fill="#94a3b8">Entièrement automatisé, zéro action manuelle</text>
+    
+    <text x="700" y="1130" font-size="18" font-weight="700" fill="#ffffff">✅ 100% Validé</text>
+    <text x="700" y="1160" font-size="14" fill="#94a3b8">5 validations, zéro données incomplètes</text>
+    
+    <text x="1150" y="1130" font-size="18" font-weight="700" fill="#ffffff">🔒 Atomic</text>
+    <text x="1150" y="1160" font-size="14" fill="#94a3b8">Transaction Firestore, zéro risque</text>
+  </g>
+</svg>
